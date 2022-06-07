@@ -1,0 +1,23 @@
+body {
+    background-color: #b2b6ff;
+}
+
+
+
+.centralCard {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding: 20px;
+    width: 700px;
+    margin-top: 50px;
+
+}
+
+.cardTitle {
+    text-align: center;
+}
+
+.btnPrimary {
+    background-color: #9fa3fa;
+    margin: 10px;
+}
