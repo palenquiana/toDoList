@@ -5,12 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>ToDoList</title>
 </head>
 <body>
+    <div class="container-xl px-5 d-flex justify-content-center">
+        <div class="centralCard" id="categoriesCard">
+            <h2 class="cardTitle">Agregar categorí­as</h2>
+
+            <form action="" method="" id="formAddCategory">
+                <label for="" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="inputTextCategory" id="inputTextCategory">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btnPrimary">Agregar</button>
+                </div>
+            </form>
+
+            <table id="categoriesTable">
+                <tbody id="categoriesTableBody">
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./app/layout.js"></script>
-    <script src="./app/header.js"></script>
     <script src="./api/categories.js"></script>
     <script src="./app/categories.js"></script>
 </body>
