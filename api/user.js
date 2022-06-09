@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,9 +34,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
-exports.addUser = void 0;
-var addUser = function (newUser) { return __awaiter(void 0, void 0, void 0, function () {
+var _this = this;
+var addUser = function (newUser) { return __awaiter(_this, void 0, void 0, function () {
     var optionNewUser;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -49,11 +47,22 @@ var addUser = function (newUser) { return __awaiter(void 0, void 0, void 0, func
                     },
                     body: JSON.stringify(newUser)
                 };
-                return [4 /*yield*/, fetch('https://todolist-d34a7-default-rtdb.firebaseio.com/addusers.json', optionNewUser)];
+                return [4 /*yield*/, fetch('https://todolist-d34a7-default-rtdb.firebaseio.com/user.json', optionNewUser)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];
         }
     });
 }); };
-exports.addUser = addUser;
+// const optionNewUser2 = (user:any) => {
+//     fetch ('https://todolist-d34a7-default-rtdb.firebaseio.com/user.json',{
+//         method: 'POST',
+//         body: JSON.stringify(user), 
+//         headers: {
+//              'Content-Type': 'application/json'
+//     }
+//   }).then((res) => res.json())
+//   .then((data) => {
+//     console.log(data)
+//     })
+// }

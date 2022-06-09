@@ -1,6 +1,7 @@
-import { addUser } from "../api/user";
-const formNewUser = document.getElementById("form-new-user");
-formNewUser?.addEventListener("submit", function (e) {
+
+
+const formNewUser = document.getElementById("form-new-user") as HTMLElement;
+formNewUser.addEventListener("submit", function (e) {
   e.preventDefault();
   const name = document.getElementById("POST-name") as HTMLInputElement;
   const email = document.getElementById("POST-email") as HTMLInputElement;
