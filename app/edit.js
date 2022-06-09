@@ -35,63 +35,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-var categoriesTableBody = document.getElementById('categoriesTableBody');
-var createCategoryList = function () { return __awaiter(_this, void 0, void 0, function () {
-    var response, categories;
+var params = new URLSearchParams(window.location.search);
+var slug = params.get("slug");
+var inputEditCategory = document.getElementById('inputEditCategory');
+var editBtnCategory = document.getElementById('editBtnCategory');
+var getCategory = function () { return __awaiter(_this, void 0, void 0, function () {
+    var response, categories, category;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getCategories()];
             case 1:
                 response = _a.sent();
                 categories = mapToArray(response);
-                categoriesTableBody.innerHTML = "";
-                categories.forEach(function (category) {
-                    var tRow = document.createElement('tr');
-                    categoriesTableBody.appendChild(tRow);
-                    // Category list
-                    var tDataCat = document.createElement('td');
-                    var tDataText = document.createElement('span');
-                    tDataText.appendChild(document.createTextNode(category.name));
-                    tDataCat.style.width = "470px";
-                    tDataCat.appendChild(tDataText);
-                    tDataText.classList.add('categorySpan');
-                    tRow.appendChild(tDataCat);
-                    //Edit Button
-                    var tDataEdit = document.createElement('td');
-                    tRow.appendChild(tDataEdit);
-                    var editBtn = document.createElement('a');
-                    editBtn.setAttribute('href', "./edit.html?slug=".concat(category.slug));
-                    editBtn.classList.add("btn", "btn-link");
-                    editBtn.style.textDecoration = "none";
-                    editBtn.appendChild(document.createTextNode("Editar"));
-                    tDataEdit.appendChild(editBtn);
-                    //Delete Button
-                    var tDataDel = document.createElement('td');
-                    tRow.appendChild(tDataDel);
-                    var delBtn = document.createElement('button');
-                    delBtn.classList.add("btn", "btn-link");
-                    delBtn.style.textDecoration = "none";
-                    delBtn.appendChild(document.createTextNode("Eliminar"));
-                    tDataDel.appendChild(delBtn);
-                    delBtn.addEventListener('click', function () {
-                        deleteCategory(category.idDB);
-                        createCategoryList();
-                    });
+                category = categories.find(function (item) { return item.slug === slug; });
+                inputEditCategory.value = category.slug;
+                // // Edit Button
+                editBtnCategory.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var modifiedCategory = {
+                        idDB: category.idDB,
+                        name: inputEditCategory.value,
+                        slug: inputEditCategory.value
+                    };
+                    console.log(modifiedCategory);
+                    modifyCategory(category.idDB, modifiedCategory);
                 });
-                createCategoryList();
                 return [2 /*return*/];
         }
     });
 }); };
-createCategoryList();
-var formAddCategory = document.getElementById('formAddCategory');
-// Add Category
-formAddCategory.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var category = {
-        name: e.target.inputTextCategory.value,
-        slug: e.target.inputTextCategory.value
-    };
-    addCategory(category);
-    createCategoryList();
-});
+getCategory();
