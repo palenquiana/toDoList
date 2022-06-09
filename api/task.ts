@@ -10,3 +10,9 @@ const addTask = async (newTask)=>{
 
 
 }
+
+const getTask = async () => {
+    const response = await fetch('https://todolist-d34a7-default-rtdb.firebaseio.com/task.json');
+    const data = await response.json();
+    return data;    
+}
