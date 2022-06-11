@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -54,3 +65,69 @@ var addCategory = function (newCategory) { return __awaiter(_this, void 0, void 
         }
     });
 }); };
+var deleteCategory = function (category) { return __awaiter(_this, void 0, void 0, function () {
+    var option;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                option = {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(category)
+                };
+                return [4 /*yield*/, fetch("https://todolist-d34a7-default-rtdb.firebaseio.com/categories/".concat(category, ".json"), option)];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); };
+var getCategories = function () { return __awaiter(_this, void 0, void 0, function () {
+    var response, data;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, fetch('https://todolist-d34a7-default-rtdb.firebaseio.com/categories.json')];
+            case 1:
+                response = _a.sent();
+                return [4 /*yield*/, response.json()];
+            case 2:
+                data = _a.sent();
+                return [2 /*return*/, data];
+        }
+    });
+}); };
+var modifyCategory = function (category, modifiedCategory) { return __awaiter(_this, void 0, void 0, function () {
+    var option;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                option = {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(modifiedCategory)
+                };
+                return [4 /*yield*/, fetch("https://todolist-d34a7-default-rtdb.firebaseio.com/categories/".concat(category, ".json"), option)];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); };
+var mapToArray = function (object) {
+    var array = [];
+    for (var elem in object) {
+        array.push(__assign(__assign({}, object[elem]), { idDB: elem }));
+    }
+    return array;
+};
+// const getCategories = () => { 
+//     fetch('https://todolist-d34a7-default-rtdb.firebaseio.com/categories.json')
+//     .then(response => response.json())
+//     .then(data => {
+//      return data;
+//     })
+// }
