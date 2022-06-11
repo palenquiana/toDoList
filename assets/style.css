@@ -21,3 +21,16 @@ body {
     background-color: #9fa3fa;
     margin: 10px;
 }
+.card-task{
+    width:500px;
+}
+
+.card-task .card{
+    background-color: #F5F5F5;
+    border: none;
+    width: 200px;
+    display: flex;
+    margin-left: 130px;
+    
+    
+}
