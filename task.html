@@ -5,12 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Assets/styles.css">
     <title>Document</title>
 </head>
 <body>
+    <main>
+        <div class="d-flex justify-content-center">
+            <form id="task-items">
+                <div class="flex-column justify-content-center p-5">
+
+                    <h2>Agregar tareas</h2>
+              
+                    <div class="flex-column">
+
+                        <label for="title" >Título</label>
+                        <input type="text" name="task" id="title">
+                        
+                    </div>
+
+                    <div class="p-1">
+
+                        <label for="dateT">Fecha</label>
+                        <input type="date" name="task" id="dateT" value="dd/MM/yyyy">
+                        
+                    </div>
+                
+
+                    <div class="p-1">
+
+                        <label for="status">Estado</label>
+        
+                        <input type="radio" name="status" id="pending" value="opPendiente">
+                        <label for="pending">Pendiente</label>
+        
+                        <input type="radio" name="status" id="inProcess" value="opProceso">
+                        <label for="inProcess">En proceso</label>
+        
+                        <input type="radio" name="status" id="done" value="opHecho">
+                        <label for="done">Hecho</label>
+
+                    </div>
+        
+                    <div class="p-1">
+
+                        <label for="category" name="task">Categoría</label>
+                        <select name="task" id="category"></select>
+                        <option value=""></option>
+
+                    </div>
+        
+                    <div class="p-1">
+
+                        <label for="user" name="task">Usuario</label>
+                        <select name="task" id="user"></select>
+                        <option value=""></option>
+                    
+                    </div>
+                    <label for="description">Descripción</label>
+                    <div>
+                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Agregue una descripción" ></textarea>
+                    </div>
+
+                    <input type="submit" value="Agregar" class="me-5">
+        
+                </div>
+
+                
+              
+        
+            </form>
+    
+        </div>
+
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./app/layout.js"></script>
-    <!-- <script src="./app/header.js"></script> -->
+
+    <script src="./api/task.js"></script>
+
     <script src="./app/task.js"></script>
+    
+
+    
+   
 </body>
 </html>
