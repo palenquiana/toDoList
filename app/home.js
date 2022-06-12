@@ -35,9 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-var selectC = document.getElementById("category-select");
-var selectU = document.getElementById("user-select");
-var createOption = function () { return __awaiter(_this, void 0, void 0, function () {
+var selectHome = document.getElementById("filter");
+var opGroupCategories = document.getElementById('category-filter');
+var opGroupUser = document.getElementById('user-filter');
+var createOptionHome = function () { return __awaiter(_this, void 0, void 0, function () {
     var cat, categories, user, users;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -50,7 +51,7 @@ var createOption = function () { return __awaiter(_this, void 0, void 0, functio
                     optionCat.setAttribute('id', category.idDB);
                     optionCat.setAttribute('value', category.name);
                     optionCat.appendChild(document.createTextNode(category.name));
-                    selectC.appendChild(optionCat);
+                    opGroupCategories.appendChild(optionCat);
                 });
                 return [4 /*yield*/, getUser()];
             case 2:
@@ -61,24 +62,52 @@ var createOption = function () { return __awaiter(_this, void 0, void 0, functio
                     optionUser.setAttribute('id', user.idDB);
                     optionUser.setAttribute('value', user.name);
                     optionUser.appendChild(document.createTextNode(user.name));
-                    selectU.appendChild(optionUser);
+                    selectHome.appendChild(optionUser);
                 });
                 return [2 /*return*/];
         }
     });
 }); };
-createOption();
-var form = document.getElementById('task-items');
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var task = {
-        title: e.target.title.value,
-        date: e.target.dateT.value,
-        status: e.target.status.value,
-        category: selectC.value,
-        user: selectU.value,
-        description: e.target.description.value
-    };
-    addTask(task);
-    var taskMap = mapToArray(task);
-});
+createOptionHome();
+// const tbTasks = document.getElementById('tb-task') as HTMLTableSectionElement;
+// const createTableTasks = async () => {
+//     const response = await getTask();
+//     // const data = await response.json();
+//     const tasks = mapToArray(response);
+//     tbTasks.innerHTML = ""; 
+//     tasks.forEach(task=> {      
+//         let tRow = document.createElement('tr');
+//         tbTasks.appendChild(tRow);
+//         // Category list
+//         let tDataCat = document.createElement('td');
+//         let tDataText = document.createElement('span');
+//         tDataText.appendChild(document.createTextNode(task.title))
+//         tDataCat.style.width = "470px";
+//         tDataCat.appendChild(tDataText);
+//         tDataText.classList.add('categorySpan')
+//         tRow.appendChild(tDataCat);
+//        //Edit Button
+//         let tDataEdit = document.createElement('td');
+//         tRow.appendChild(tDataEdit);    
+//         const editBtn = document.createElement('a');
+//         editBtn.setAttribute('href', `./edit.html?task=${task.s}`);
+//         editBtn.classList.add("btn", "btn-link");
+//         editBtn.style.textDecoration = "none";
+//         editBtn.appendChild(document.createTextNode("Editar"));
+//         tDataEdit.appendChild(editBtn);
+//         //Delete Button
+//         let tDataDel = document.createElement('td');
+//         tRow.appendChild(tDataDel);
+//         const delBtn = document.createElement('button');
+//         delBtn.classList.add("btn", "btn-link");
+//         delBtn.style.textDecoration = "none";
+//         delBtn.appendChild(document.createTextNode("Eliminar"));
+//         tDataDel.appendChild(delBtn);
+//         delBtn.addEventListener('click', () => {
+//             deleteCategory(category.idDB);            
+//             createCategoryList();
+//         })
+//     })
+//     createCategoryList();
+// }
+// createCategoryList();
