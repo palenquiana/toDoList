@@ -26,7 +26,11 @@
 
                 <select name="task-filter" id="filter" class="d-flex">
                     
-                    <optgroup label="Estado" id="status-filter"></optgroup>
+                    <optgroup label="Estado" id="status-filter">
+                        <option value="">Pendiente</option>
+                        <option value="">En proceso</option>
+                        <option value="">Hecho</option>
+                    </optgroup>
                     <optgroup label="Categoria" id="category-filter"></optgroup>
                     <optgroup label="Usuario" id="user-filter"></optgroup>
                 </select>
@@ -61,8 +65,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./app/layout.js"></script>
+    <script src="./api/categories.js"></script>
     <script src="./app/categories.js"></script>
+    <script src="./api/user.js"></script>
     <script src="./app/users.js"></script>
+    <script src="./api/task.js"></script>
     <script src="./app/task.js"></script>
     <script src="./app/home.js"></script>
 </body>

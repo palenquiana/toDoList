@@ -6,7 +6,7 @@ const createOption = async ()=>{
     const cat = await getCategories();
 
     const categories = mapToArray(cat);
-    console.log(categories);
+  
     
 
     categories.forEach((category)=>{
@@ -17,9 +17,29 @@ const createOption = async ()=>{
     optionCat.appendChild(document.createTextNode(category.name))
     selectC.appendChild(optionCat);
 
+
     
 
  })
+
+    const user = await getUser();
+    // console.log(user);
+
+    const users = mapToArray(user);
+
+ 
+
+    users.forEach((user)=>{
+ 
+    const optionUser = document.createElement('option');
+    optionUser.setAttribute('id', user.idDB)
+    optionUser.setAttribute('value', user.name)
+    optionUser.appendChild(document.createTextNode(user.name))
+    selectU.appendChild(optionUser);
+
+ 
+
+})
     
 
 
@@ -33,9 +53,7 @@ createOption()
 
 
 
-
-
-const form = document.getElementById('task-items');
+const form = document.getElementById('task-items') as HTMLFormElement;
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault();
@@ -44,15 +62,20 @@ form.addEventListener('submit', (e) =>{
         title : e.target.title.value,
         date : e.target.dateT.value,
         status : e.target.status.value,
-        category : categories.name,
-        // user: falta funcion get user
+        category : selectC.value,
+        user: selectU.value,
         description : e.target.description.value
     }
+   
+
+    
    
     
     addTask(task)
     
     const taskMap = mapToArray(task);
+    
+    
 
 
     

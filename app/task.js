@@ -38,20 +38,30 @@ var _this = this;
 var selectC = document.getElementById("category-select");
 var selectU = document.getElementById("user-select");
 var createOption = function () { return __awaiter(_this, void 0, void 0, function () {
-    var cat, categories;
+    var cat, categories, user, users;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getCategories()];
             case 1:
                 cat = _a.sent();
                 categories = mapToArray(cat);
-                console.log(categories);
                 categories.forEach(function (category) {
                     var optionCat = document.createElement('option');
                     optionCat.setAttribute('id', category.idDB);
                     optionCat.setAttribute('value', category.name);
                     optionCat.appendChild(document.createTextNode(category.name));
                     selectC.appendChild(optionCat);
+                });
+                return [4 /*yield*/, getUser()];
+            case 2:
+                user = _a.sent();
+                users = mapToArray(user);
+                users.forEach(function (user) {
+                    var optionUser = document.createElement('option');
+                    optionUser.setAttribute('id', user.idDB);
+                    optionUser.setAttribute('value', user.name);
+                    optionUser.appendChild(document.createTextNode(user.name));
+                    selectU.appendChild(optionUser);
                 });
                 return [2 /*return*/];
         }
@@ -65,8 +75,8 @@ form.addEventListener('submit', function (e) {
         title: e.target.title.value,
         date: e.target.dateT.value,
         status: e.target.status.value,
-        category: categories.name,
-        // user: falta funcion get user
+        category: selectC.value,
+        user: selectU.value,
         description: e.target.description.value
     };
     addTask(task);
