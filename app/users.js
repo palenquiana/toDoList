@@ -10,4 +10,5 @@ formNewUser.addEventListener("submit", function (e) {
         password: password.value
     };
     addUser(user);
+    var UserMap = mapToArray(user);
 });
