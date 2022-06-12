@@ -45,13 +45,12 @@ const createCategoryList = async () => {
         tDataDel.appendChild(delBtn);
 
 
-        delBtn.addEventListener('click', () => {
-            deleteCategory(category.idDB);            
+        delBtn.addEventListener('click', async () => {
+            await deleteCategory(category.idDB);            
             createCategoryList();
         })
     })
 
-    createCategoryList();
 }
 
 createCategoryList();

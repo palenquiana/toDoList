@@ -38,6 +38,7 @@ var _this = this;
 var categoriesTableBody = document.getElementById('categoriesTableBody');
 var createCategoryList = function () { return __awaiter(_this, void 0, void 0, function () {
     var response, categories;
+    var _this = this;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getCategories()];
@@ -73,12 +74,18 @@ var createCategoryList = function () { return __awaiter(_this, void 0, void 0, f
                     delBtn.style.textDecoration = "none";
                     delBtn.appendChild(document.createTextNode("Eliminar"));
                     tDataDel.appendChild(delBtn);
-                    delBtn.addEventListener('click', function () {
-                        deleteCategory(category.idDB);
-                        createCategoryList();
-                    });
+                    delBtn.addEventListener('click', function () { return __awaiter(_this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0: return [4 /*yield*/, deleteCategory(category.idDB)];
+                                case 1:
+                                    _a.sent();
+                                    createCategoryList();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); });
                 });
-                createCategoryList();
                 return [2 /*return*/];
         }
     });
