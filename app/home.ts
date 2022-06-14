@@ -1,52 +1,58 @@
 
  
-const selectHome =document.getElementById("filter") as HTMLSelectElement;
-const opGroupCategories = document.getElementById('category-filter') as HTMLOptGroupElement;
-const opGroupUser = document.getElementById('user-filter') as HTMLOptGroupElement;
+const selectStatus = document.getElementById("status-filter") as HTMLSelectElement;
+const selectCategories = document.getElementById('category-filter') as HTMLSelectElement;
+const selectUser = document.getElementById('user-filter') as HTMLSelectElement;
     
-const createOptionHome = async ()=>{
+const createSelectsHome = async ()=>{
 
-    const cat = await getCategories();
-    const categories = mapToArray(cat);
+    const catResponse = await getCategories();
+    const categories = mapToArray(catResponse);
+
+    const userResponse = await getUser();
+    const users = mapToArray(userResponse);
 
     categories.forEach((category)=>{
-    
-    const optionCat = document.createElement('option');
-    optionCat.setAttribute('id', category.idDB)
-    optionCat.setAttribute('value', category.name)
-    optionCat.appendChild(document.createTextNode(category.name))
-    opGroupCategories.appendChild(optionCat);
-
-    
-
- })
-
-    const user = await getUser();
-
-    const users = mapToArray(user);
-
- 
+        const optionCat = document.createElement('option');
+        optionCat.setAttribute('id', category.idDB)
+        optionCat.setAttribute('value', category.name)
+        optionCat.appendChild(document.createTextNode(category.name))
+        selectCategories.appendChild(optionCat);
+    })
 
     users.forEach((user)=>{
- 
-    const optionUser = document.createElement('option');
-    optionUser.setAttribute('id', user.idDB)
-    optionUser.setAttribute('value', user.name)
-    optionUser.appendChild(document.createTextNode(user.name))
-    selectHome.appendChild(optionUser);
-
- 
-
-})
+        const optionUser = document.createElement('option');
+        optionUser.setAttribute('id', user.idDB)
+        optionUser.setAttribute('value', user.name)
+        optionUser.appendChild(document.createTextNode(user.name))
+        selectUser.appendChild(optionUser);
+    })
     
-
-
 
 }
 
-createOptionHome()
+createSelectsHome();
 
+selectStatus.addEventListener('change', (e) => {
+    e.stopPropagation();  
+    const params = new URLSearchParams(window.location.search);
+    params.set('status', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString(); 
+})
 
+selectCategories.addEventListener('change', (e) => {
+    e.stopPropagation();  
+    const params = new URLSearchParams(window.location.search);
+    params.set('category', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString(); 
+})
+
+selectUser.addEventListener('change', (e) => {
+    e.stopPropagation();  
+    const params = new URLSearchParams(window.location.search);
+    params.set('user', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString(); 
+})
     
 
 
