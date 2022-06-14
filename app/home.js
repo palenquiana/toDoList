@@ -35,40 +35,58 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-var selectHome = document.getElementById("filter");
-var opGroupCategories = document.getElementById('category-filter');
-var opGroupUser = document.getElementById('user-filter');
-var createOptionHome = function () { return __awaiter(_this, void 0, void 0, function () {
-    var cat, categories, user, users;
+var selectStatus = document.getElementById("status-filter");
+var selectCategories = document.getElementById('category-filter');
+var selectUser = document.getElementById('user-filter');
+var createSelectsHome = function () { return __awaiter(_this, void 0, void 0, function () {
+    var catResponse, categories, userResponse, users;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getCategories()];
             case 1:
-                cat = _a.sent();
-                categories = mapToArray(cat);
+                catResponse = _a.sent();
+                categories = mapToArray(catResponse);
+                return [4 /*yield*/, getUser()];
+            case 2:
+                userResponse = _a.sent();
+                users = mapToArray(userResponse);
                 categories.forEach(function (category) {
                     var optionCat = document.createElement('option');
                     optionCat.setAttribute('id', category.idDB);
                     optionCat.setAttribute('value', category.name);
                     optionCat.appendChild(document.createTextNode(category.name));
-                    opGroupCategories.appendChild(optionCat);
+                    selectCategories.appendChild(optionCat);
                 });
-                return [4 /*yield*/, getUser()];
-            case 2:
-                user = _a.sent();
-                users = mapToArray(user);
                 users.forEach(function (user) {
                     var optionUser = document.createElement('option');
                     optionUser.setAttribute('id', user.idDB);
                     optionUser.setAttribute('value', user.name);
                     optionUser.appendChild(document.createTextNode(user.name));
-                    selectHome.appendChild(optionUser);
+                    selectUser.appendChild(optionUser);
                 });
                 return [2 /*return*/];
         }
     });
 }); };
-createOptionHome();
+createSelectsHome();
+selectStatus.addEventListener('change', function (e) {
+    e.stopPropagation();
+    var params = new URLSearchParams(window.location.search);
+    params.set('status', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString();
+});
+selectCategories.addEventListener('change', function (e) {
+    e.stopPropagation();
+    var params = new URLSearchParams(window.location.search);
+    params.set('category', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString();
+});
+selectUser.addEventListener('change', function (e) {
+    e.stopPropagation();
+    var params = new URLSearchParams(window.location.search);
+    params.set('user', e.target.value);
+    window.location.href = window.location.pathname + '?' + params.toString();
+});
 // const tbTasks = document.getElementById('tb-task') as HTMLTableSectionElement;
 // const createTableTasks = async () => {
 //     const response = await getTask();
